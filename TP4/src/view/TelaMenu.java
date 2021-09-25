@@ -4,6 +4,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import modelo.*;
+
 public class TelaMenu implements ActionListener {
 	
 	private static JFrame janela = new JFrame("Acessórios p/ Celular");
@@ -12,6 +14,7 @@ public class TelaMenu implements ActionListener {
 	private static JButton produto = new JButton("Produtos");
 	private static JButton relatorio = new JButton("Relatorios");
 	private static JButton ajuda = new JButton("Ajuda");
+	private static Dados dados = new Dados();
 	
 	public TelaMenu() {
 		
@@ -43,7 +46,10 @@ public class TelaMenu implements ActionListener {
 		// TODO Auto-generated method stub
 		TelaMenu menu = new TelaMenu();
 		System.out.print("TESTE NO CONSOLE");
-		
+		dados.gerarDados();
+		System.out.print(dados.getClientes().get(0).getNome());
+		dados.getClientes().add(new Cliente("VB", "VB", "VB", "VB", "VB"));
+		System.out.print(dados.getClientes().get(0).getNome() + dados.getClientes().get(1).getNome());
 		//Leitor de ação
 		clientes.addActionListener(menu);
 		relatorio.addActionListener(menu);
