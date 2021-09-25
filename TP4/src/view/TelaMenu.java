@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-
 public class TelaMenu implements ActionListener {
 	
 	private static JFrame janela = new JFrame("Acessórios p/ Celular");
@@ -43,15 +42,31 @@ public class TelaMenu implements ActionListener {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		TelaMenu menu = new TelaMenu();
+		System.out.print("TESTE NO CONSOLE");
 		
 		//Leitor de ação
 		clientes.addActionListener(menu);
 		relatorio.addActionListener(menu);
 		produto.addActionListener(menu);
+		ajuda.addActionListener(menu);
 	}
 	
 	public void actionPerformed(ActionEvent e) {
+		Object src = e.getSource();
 		
+		if(src == clientes)
+			new TelaCliente();
+		
+		
+		if(src == produto)
+			new TelaProduto();
+		
+		if(src == relatorio)
+			new TelaRelatorio();
+		
+		if(src == ajuda)
+			new TelaAjuda();
+	
 	}
 
 }

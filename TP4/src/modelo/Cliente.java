@@ -10,6 +10,10 @@ public class Cliente {
 	
 	//Constructor
 	
+	public Cliente() {
+		
+	}
+	
 	public Cliente(String nome, String cpf, String endereco, String email, String telefone) {
 		this.nome = nome;
 		this.cpf = cpf;
