@@ -13,7 +13,11 @@ public class Dados {
 	public void setClientes(ArrayList<Cliente> clientes) {
 		this.clientes = clientes;
 	}
-
+	
+	public void cadastraCliente(Cliente c) {
+		this.clientes.add(c);
+	}
+	
 	public void gerarDados(){
 		
 		clientes.add(new Cliente("A", "B", "C", "D", "E"));
