@@ -17,9 +17,15 @@ public class ControleDados {
 		this.d = d;
 	}
 	
-	public boolean cadastraCliente(String[] dadosCliente) {
-		Cliente c = new Cliente(dadosCliente[0],dadosCliente[1],dadosCliente[2],dadosCliente[3],dadosCliente[4]);
-		d.cadastraCliente(c);
+	public boolean editarCadastrarCliente(String[] dadosCliente, int opcao, int pos) {
+		if(opcao == 1) {
+			Cliente c = new Cliente(dadosCliente[0],dadosCliente[1],dadosCliente[2],dadosCliente[3],dadosCliente[4]);
+			d.cadastraCliente(c);
+		}	else {
+			Cliente c = new Cliente(dadosCliente[0],dadosCliente[1],dadosCliente[2],dadosCliente[3],dadosCliente[4]);
+			d.editaCliente(c, pos);
+		}
+		
 		return true;
 	}
 	

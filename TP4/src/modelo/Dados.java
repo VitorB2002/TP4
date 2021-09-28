@@ -18,6 +18,10 @@ public class Dados {
 		this.clientes.add(c);
 	}
 	
+	public void editaCliente(Cliente c, int pos) {
+		this.clientes.set(pos, c);
+	}
+	
 	public void gerarDados(){
 		
 		clientes.add(new Cliente("A", "B", "C", "D", "E"));

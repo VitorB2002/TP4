@@ -47,15 +47,17 @@ public class TelaMenu implements ActionListener {
 		// TODO Auto-generated method stub
 		TelaMenu menu = new TelaMenu();
 		System.out.print("TESTE NO CONSOLE");
+		System.out.print("\n" + dados.getDados().getClientes().get(0).getNome());
+		
 		dadosCliente[0] = "Vitor";
 		dadosCliente[1] = "0525324935";
 		dadosCliente[2] = "Vila da alegria";
 		dadosCliente[3] = "Vitob.santos@gmail.com";
 		dadosCliente[4] = "61992151043";
-		dados.cadastraCliente(dadosCliente);
-		System.out.print("\n" + dados.getDados().getClientes().get(0).getNome());
+		dados.editarCadastrarCliente(dadosCliente, 2, 0);
 		
-		System.out.print("\n" + dados.getDados().getClientes().get(1).getNome());
+		
+		System.out.print("\n" + dados.getDados().getClientes().get(0).getNome());
 		//Leitor de ação
 		clientes.addActionListener(menu);
 		relatorio.addActionListener(menu);
