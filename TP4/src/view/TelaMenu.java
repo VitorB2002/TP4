@@ -73,7 +73,7 @@ public class TelaMenu implements ActionListener {
 		Object src = e.getSource();
 		
 		if(src == clientes)
-			new TelaCliente();
+			new TelaCliente().mostrarTela(dados);;
 		
 		if(src == produto)
 			new TelaProduto();
