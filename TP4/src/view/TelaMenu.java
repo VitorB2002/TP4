@@ -38,7 +38,7 @@ public class TelaMenu implements ActionListener {
 		janela.add(produto);
 		janela.add(relatorio);
 		
-		janela.setSize(400, 200);
+		janela.setSize(400, 400);
 		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		janela.setVisible(true);
 	}
@@ -58,6 +58,10 @@ public class TelaMenu implements ActionListener {
 		
 		
 		System.out.print("\n" + dados.getDados().getClientes().get(0).getNome());
+		System.out.print("\n" + dados.getDados().getClientes().get(1).getNome());
+		System.out.print("\n" + dados.getDados().getClientes().get(2).getNome());
+		System.out.print("\n" + dados.getDados().getClientes().get(3).getNome());
+		System.out.print("\n" + dados.getDados().getClientes().get(4).getNome());
 		//Leitor de ação
 		clientes.addActionListener(menu);
 		relatorio.addActionListener(menu);
