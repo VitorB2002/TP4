@@ -6,6 +6,7 @@ import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.event.ListSelectionEvent;
 import javax.swing.JList;
 import controle.*;
 
@@ -60,8 +61,10 @@ public class TelaAuxCliente implements ActionListener{
 					nomes[i] = (dados.getDados().getClientes().get(i).getNome());
 				}
 				
+				JLabel instrucao = new JLabel("Clique para editar");
+				instrucao.setBounds(120, 10, 60, 60);
 				listaNomes = new JList<String>(nomes);
-				listaNomes.setBounds(20, 50, 400, 300);
+				
 				listaNomes.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 				listaNomes.setVisibleRowCount(10);
 				
@@ -73,7 +76,7 @@ public class TelaAuxCliente implements ActionListener{
 				
 				janela.getContentPane().setLayout(new FlowLayout());
 				janela.getContentPane().add(scroll);
-				
+				janela.add(instrucao);
 				janela.add(refresh);
 				janela.setSize(300, 250);
 				janela.setVisible(true);
@@ -183,7 +186,19 @@ public class TelaAuxCliente implements ActionListener{
 			}
 		}
 		
-		
+		if (src == refresh) {
+			
+		}
 		
 	}
+	
+	public void valueChanged(ListSelectionEvent e) {
+		Object src = e.getSource();
+
+		if(e.getValueIsAdjusting() && src == listaNomes) {
+			
+		}
+
+	}
+	
 }

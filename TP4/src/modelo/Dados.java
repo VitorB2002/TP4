@@ -25,8 +25,13 @@ public class Dados {
 	public void gerarDados(){
 		int aux;
 		aux = 5;
+		
 		for (int i = 0; i < aux; i++) {
-			clientes.add(new Cliente("Cliente" + i, "" + (i + 42234533), "Casa" + (i + 1), "Cliente" + i + "@gmail.com", "40028921" + i));
+			clientes.add(new Cliente("Cliente" + i
+					, "" + (i + 42234533)
+					, "Casa" + (i + 1)
+					, "Cliente" + i + "@gmail.com"
+					, "40028921" + i));
 		}
 			
 	}

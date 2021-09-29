@@ -15,9 +15,29 @@ public class Estoque {
 	private int qtdCapa = 0;
 	private int qtdFone = 0;
 	private int qtdVenda = 0;
-
-	public Estoque() {
-		
+	
+	public void cadastraCapa(Capa c) {
+		this.capas.add(c);
+	}
+	
+	public void editaCapa(Capa c, int pos) {
+		this.capas.set(pos, c);
+	}
+	
+	public void gerarDados(){
+		int aux;
+		aux = 5;
+		for (int i = 0; i < aux; i++) {
+			capas.add(new Capa("CapaModelo" + i
+					, "Proteção"
+					, (aux*i)
+					, "Marca" + i
+					, "Material" + i
+					, "Celular" + i
+					, (aux*0.4)
+					, "Cor" + i));
+		}
+			
 	}
 	
 	public void relatorioProdutos(int qtdCarregador, int qtdPelicula, int qtdCapa, int qtdFone, int vendas) {
@@ -46,40 +66,40 @@ public class Estoque {
 		return capas;
 	}
 	
-	public void setCapas(Capa capa) {
-		capas.add(capa);
+	public void setCapas(ArrayList<Capa> capas) {
+		this.capas = capas;
 	}
 	
 	public ArrayList<Carregador> getCarregadores() {
 		return carregadores;
 	}
 	
-	public void setCarregadores(Carregador carregador) {
-		carregadores.add(carregador);
+	public void setCarregadores(ArrayList<Carregador> carregadores) {
+		this.carregadores = carregadores;
 	}
 	
 	public ArrayList<Pelicula> getPeliculas() {
 		return peliculas;
 	}
 	
-	public void setPeliculas(Pelicula pelicula) {
-		peliculas.add(pelicula);
+	public void setPeliculas(ArrayList<Pelicula> peliculas) {
+		this.peliculas = peliculas;
 	}
 	
 	public ArrayList<Fone> getFones() {
 		return fones;
 	}
 	
-	public void setFones(Fone fone) {
-		fones.add(fone);
+	public void setFones(ArrayList<Fone> fones) {
+		this.fones = fones;
 	}
 	
 	public ArrayList<Venda> getVendas() {
 		return vendas;
 	}
 
-	public void setVendas(Venda venda) {
-		vendas.add(venda);
+	public void setVendas(ArrayList<Venda> vendas) {
+		this.vendas = vendas;
 	}
 
 	public int getQtdCarregador() {

@@ -16,6 +16,7 @@ public class TelaMenu implements ActionListener {
 	private static JButton ajuda = new JButton("Ajuda");
 	private static String[] dadosCliente = new String[5];
 	private static ControleDados dados = new ControleDados();
+	private static ControleEstoque estoque = new ControleEstoque(); 
 	
 	public TelaMenu() {
 		
@@ -62,6 +63,7 @@ public class TelaMenu implements ActionListener {
 		System.out.print("\n" + dados.getDados().getClientes().get(2).getNome());
 		System.out.print("\n" + dados.getDados().getClientes().get(3).getNome());
 		System.out.print("\n" + dados.getDados().getClientes().get(4).getNome());
+		
 		//Leitor de ação
 		clientes.addActionListener(menu);
 		relatorio.addActionListener(menu);
@@ -73,10 +75,10 @@ public class TelaMenu implements ActionListener {
 		Object src = e.getSource();
 		
 		if(src == clientes)
-			new TelaCliente().mostrarTela(dados);;
+			new TelaCliente().mostrarTela(dados);
 		
 		if(src == produto)
-			new TelaProduto();
+			new TelaProduto().mostrarTela(estoque);
 		
 		if(src == relatorio)
 			new TelaRelatorio();
