@@ -12,36 +12,25 @@ public class TelaCliente implements ActionListener{
 	private static JButton listar = new JButton("Listar Clientes");
 	private static JButton cadastrar = new JButton("Cadastrar Clientes");
 	private static JButton buscar = new JButton("Buscar Cliente");
-	private static JList<String> listaNomes = new JList<String>();
 	private static ControleDados dados;
-	int qtdClientes;
-	
-	
 	
 	public void mostrarTela(ControleDados d) {
+		
 		dados = d;
-		qtdClientes = dados.getDados().getClientes().size();
-		String[] nomes = new String[qtdClientes];
-		for(int i = 0; i < qtdClientes; i++) {
-			nomes[i] = (dados.getDados().getClientes().get(i).getNome());
-		}
 		
-		listaNomes = new JList<String>(nomes);
-		listaNomes.setBounds(20, 50, 350, 120);
-		listaNomes.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-		listaNomes.setVisibleRowCount(10);
+		//Dimensionamento
+		listar.setBounds(120, 40, 150 , 60);
+		cadastrar.setBounds(120, 110, 150, 60);
+		buscar.setBounds(120, 180 , 150, 60);
 		
-		listar.setBounds(120, 50, 150 , 60);
-		cadastrar.setBounds(120, 100, 150, 60);
-		buscar.setBounds(120, 150 , 150, 60);
+		//Adicionando componentes ao JFrame
 		janela.setLayout(null);
-		
 		janela.add(listar);
 		janela.add(cadastrar);
 		janela.add(buscar);
 		janela.setSize(400, 300);
-		
 		janela.setVisible(true);
+		
 		listar.addActionListener(this);
 		cadastrar.addActionListener(this);
 		buscar.addActionListener(this);
@@ -55,11 +44,11 @@ public class TelaCliente implements ActionListener{
 		}
 		
 		if (src == cadastrar) {
-			
+			new TelaAuxCliente().auxClient(2, dados);
 		}
 		
 		if (src == buscar) {
-			
+			new TelaAuxCliente().auxClient(3, dados);
 		}
 		
 	}
