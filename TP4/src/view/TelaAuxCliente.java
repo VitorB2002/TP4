@@ -20,6 +20,7 @@ public class TelaAuxCliente implements ActionListener{
 	private static JLabel telefone = new JLabel("Telefone: ");
 	private static JButton salvar = new JButton("Salvar");
 	private static JButton buscar = new JButton("Buscar");
+	private static JButton refresh = new JButton("Refresh");
 	private static ControleDados dados;
 	private static JList<String> listaNomes = new JList<String>();
 	private JTextField inNome;
@@ -60,19 +61,21 @@ public class TelaAuxCliente implements ActionListener{
 				}
 				
 				listaNomes = new JList<String>(nomes);
-				listaNomes.setBounds(20, 50, 350, 200);
+				listaNomes.setBounds(20, 50, 400, 300);
 				listaNomes.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 				listaNomes.setVisibleRowCount(10);
 				
+				JScrollPane scroll = new JScrollPane(listaNomes);   
+		        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); 
+		        scroll.setBounds(20, 50, 200, 150);
+		        refresh.setBounds(120, 100, 75, 25);
 				janela = new JFrame("LISTA DE CLIENTES");
-				titulo = new JLabel("--Lista--");
-				titulo.setFont(new Font("Arial", Font.BOLD, 20));
-				titulo.setBounds(160, 10, 150, 30);
 				
-				janela.setLayout(null);
-				janela.add(titulo);
-				janela.add(listaNomes);
-				janela.setSize(400, 400);
+				janela.getContentPane().setLayout(new FlowLayout());
+				janela.getContentPane().add(scroll);
+				
+				janela.add(refresh);
+				janela.setSize(300, 250);
 				janela.setVisible(true);
 				
 			break;
@@ -101,10 +104,11 @@ public class TelaAuxCliente implements ActionListener{
 				email.setBounds(50, 200, 200, 25);
 				telefone.setBounds(50, 240, 200, 25);
 				
-				janela.setLayout(null);
+				
 				titulo.setFont(new Font("Arial", Font.BOLD, 20));
 				titulo.setBounds(135, 10, 150, 30);
 				
+				janela.setLayout(null);
 				janela.add(titulo);
 				janela.add(salvar);
 				janela.add(inNome);
@@ -135,10 +139,11 @@ public class TelaAuxCliente implements ActionListener{
 				nome.setBounds(50, 70, 200, 25);
 				inNome.setBounds(120, 70, 200, 25);
 				
-				janela.setLayout(null);
+				 
 				titulo.setFont(new Font("Arial", Font.BOLD, 20));
 				titulo.setBounds(145, 10, 150, 30);
 				
+				janela.setLayout(null);
 				janela.add(titulo);
 				janela.add(buscar);
 				janela.add(nome);
