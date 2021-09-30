@@ -18,15 +18,28 @@ public class ControleDados {
 	}
 	
 	public boolean editarCadastrarCliente(String[] dadosCliente, int opcao, int pos) {
+		
 		if(opcao == 1) {
+			
 			Cliente c = new Cliente(dadosCliente[0],dadosCliente[1],dadosCliente[2],dadosCliente[3],dadosCliente[4]);
-			d.cadastraCliente(c);
+			//Validação de Strings Nome e cpf
+			if(dadosCliente[1].matches("[0-9]+") && dadosCliente[4].matches("[0-9]+")) {
+				System.out.println("True");
+				d.cadastraCliente(c);
+				return true;
+			} else {
+				System.out.println("False");
+				return false;
+			}
+			
 		}	else {
 			Cliente c = new Cliente(dadosCliente[0],dadosCliente[1],dadosCliente[2],dadosCliente[3],dadosCliente[4]);
+			
 			d.editaCliente(c, pos);
+			return true;
 		}
 		
-		return true;
+		
 	}
 	
 }

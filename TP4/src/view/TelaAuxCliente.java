@@ -3,11 +3,8 @@ package view;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
-import javax.swing.JList;
+
 import controle.*;
 
 public class TelaAuxCliente implements ActionListener{
@@ -24,6 +21,8 @@ public class TelaAuxCliente implements ActionListener{
 	private static JButton refresh = new JButton("Refresh");
 	private static ControleDados dados;
 	private static JList<String> listaNomes = new JList<String>();
+	private static JButton editar = new JButton("Editar");
+	private static JLabel edita = new JLabel();
 	private JTextField inNome;
 	private JTextField inCpf;
 	private JTextField inEndereco;
@@ -38,15 +37,6 @@ public class TelaAuxCliente implements ActionListener{
 		
 		opcao = op;
 		dados = d;
-		
-		String[] dadosCliente = new String[5];
-		dadosCliente[0] = "Vitor";
-		dadosCliente[1] = "0525324935";
-		dadosCliente[2] = "Vila da alegria";
-		dadosCliente[3] = "Vitob.santos@gmail.com";
-		dadosCliente[4] = "61992151043";
-		dados.editarCadastrarCliente(dadosCliente, 1, 2);
-		System.out.print("\n\n\n" + dados.getDados().getClientes().get(2).getNome());
 		
 		switch(opcao) {
 			
@@ -80,9 +70,11 @@ public class TelaAuxCliente implements ActionListener{
 				janela.add(refresh);
 				janela.setSize(300, 250);
 				janela.setVisible(true);
+				refresh.addActionListener(this);
 				
 			break;
 			
+			//Cadastro
 			case 2:
 				
 				janela = new JFrame("CADASTRO");
@@ -158,6 +150,60 @@ public class TelaAuxCliente implements ActionListener{
 				
 			break;	
 		}
+		
+		
+	}
+	
+	public void editaCliente(int pos) {
+		janela = new JFrame("Dados Cliente");
+		edita = new JLabel("DADOS CLIENTE");
+		editar = new JButton("Editar");
+		editar.setBounds(120, 290, 75, 25);
+		edita.setFont(new Font("Arial", Font.BOLD, 20));
+		
+		nome.setBounds(50, 80, 200, 25);
+		cpf.setBounds(50, 120, 200, 25);
+		endereco.setBounds(50, 160, 200, 25);
+		email.setBounds(50, 200, 200, 25);
+		telefone.setBounds(50, 240, 200, 25);
+		
+		edita.setBounds(145, 10, 150, 30);
+		inNome = new JTextField(100);
+		inCpf = new JTextField(11);
+		inEndereco = new JTextField(100);
+		inEmail = new JTextField(100);
+		inTelefone = new JTextField(11);
+		
+		inNome.setBounds(120, 80, 200, 25);
+		inCpf.setBounds(120, 120, 200, 25);
+		inEndereco.setBounds(120, 160, 200, 25);
+		inEmail.setBounds(120, 200, 200, 25);
+		inTelefone.setBounds(120, 240, 200, 25);
+		
+		inNome.setText(dados.getDados().getClientes().get(pos).getNome());
+		inCpf.setText(dados.getDados().getClientes().get(pos).getCpf());
+		inEndereco.setText(dados.getDados().getClientes().get(pos).getEndereco());
+		inEmail.setText(dados.getDados().getClientes().get(pos).getEmail());
+		inTelefone.setText(dados.getDados().getClientes().get(pos).getTelefone());
+		
+		janela.add(nome);
+		janela.add(cpf);
+		janela.add(endereco);
+		janela.add(email);
+		janela.add(telefone);
+		janela.add(editar);
+		janela.add(inNome);
+		janela.add(inCpf);
+		janela.add(inEndereco);
+		janela.add(inEmail);
+		janela.add(inTelefone);
+		janela.add(edita);
+		janela.setLayout(null);
+		janela.setSize(400,400);
+		janela.setVisible(true);
+		
+		editar.addActionListener(this);
+		
 	}
 	
 	public void actionPerformed(ActionEvent e) {
@@ -165,31 +211,81 @@ public class TelaAuxCliente implements ActionListener{
 		
 		if(src == salvar) {
 			String[] dadosCliente = new String[5];
+			boolean sucesso = false;
 			dadosCliente[0] = inNome.getText();
 			dadosCliente[1] = inCpf.getText();
 			dadosCliente[2] = inEndereco.getText();
 			dadosCliente[3] = inEmail.getText();
 			dadosCliente[4] = inTelefone.getText();
-			
-			dados.editarCadastrarCliente(dadosCliente, 1, 0);
+			sucesso = dados.editarCadastrarCliente(dadosCliente, 1, 0);
+			if(sucesso) {
+				mensagemSucessoCadastro();
+			}	else {
+				mensagemFalhaCadastro();
+			}
 		}
 		
 		if (src == buscar) {
+			
 			String[] dadosCliente = new String[5];
+			boolean sucesso = false;
+			int posicao = 0;
+			
 			dadosCliente[0] = inNome.getText();
 			qtdClientes = dados.getDados().getClientes().size();
 			
 			for(int i = 0; i < qtdClientes; i++) {
 				if (dadosCliente[0].equals(dados.getDados().getClientes().get(i).getNome())) {
-					System.out.println("FODA DEMAIS");
+					sucesso = true;
+					posicao = i;
+					i = qtdClientes;
 				}
+			}
+			
+			if(sucesso) {
+				this.mensagemSucessoBusca();
+				this.editaCliente(posicao);
+			} else {
+				this.mensagemFalhaBusca();
 			}
 		}
 		
 		if (src == refresh) {
+			janela.dispose();
+			this.auxClient(1, dados);
+		}
+		
+		if (src == editar) {
 			
 		}
 		
+	}
+	
+	public void mensagemSucessoBusca() {
+		JOptionPane.showMessageDialog(null, "Cliente encontrado!", null, 
+				JOptionPane.INFORMATION_MESSAGE);
+		janela.dispose();
+	}
+	
+	public void mensagemFalhaBusca() {
+		JOptionPane.showMessageDialog(null, "Cliente não encontrado!", null, 
+				JOptionPane.ERROR_MESSAGE);
+		janela.dispose();
+	}
+	
+	public void mensagemSucessoCadastro() {
+		
+		JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!" 
+		+ "\nO mesmo pode ser visto na Lista agora", null, 
+				JOptionPane.INFORMATION_MESSAGE);
+		janela.dispose();
+		
+	}
+	
+	public void mensagemFalhaCadastro() {
+		JOptionPane.showMessageDialog(null, "Falha ao cadastrar!", null, 
+				JOptionPane.ERROR_MESSAGE);
+		janela.dispose();
 	}
 	
 	public void valueChanged(ListSelectionEvent e) {

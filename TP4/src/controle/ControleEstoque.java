@@ -163,12 +163,6 @@ private Estoque e = new Estoque();
 			break;
 		}
 		
-		
-			/*Capa c = new Capa(dadosProduto[0],dadosProduto[1],dadosProduto[2],dadosProduto[3],dadosProduto[4]);
-			d.editaCliente(c, pos);
-			*/
-		
-		
 		return true;
 	}
 }
