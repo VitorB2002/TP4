@@ -23,6 +23,8 @@ public class TelaAuxCliente implements ActionListener{
 	private static JList<String> listaNomes = new JList<String>();
 	private static JButton editar = new JButton("Editar");
 	private static JLabel edita = new JLabel();
+	private static String[] dadosCliente = new String[5];
+	private int posicao;
 	private JTextField inNome;
 	private JTextField inCpf;
 	private JTextField inEndereco;
@@ -47,23 +49,27 @@ public class TelaAuxCliente implements ActionListener{
 				qtdClientes = dados.getDados().getClientes().size();
 				String[] nomes = new String[qtdClientes];
 				
+				//Array com nome dos clientes obtido
 				for(int i = 0; i < qtdClientes; i++) {
 					nomes[i] = (dados.getDados().getClientes().get(i).getNome());
 				}
 				
 				JLabel instrucao = new JLabel("Clique para editar");
 				instrucao.setBounds(120, 10, 60, 60);
-				listaNomes = new JList<String>(nomes);
 				
+				//Jlist para view criado
+				listaNomes = new JList<String>(nomes);
 				listaNomes.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 				listaNomes.setVisibleRowCount(10);
 				
+				//Barra de rolagem para a lista
 				JScrollPane scroll = new JScrollPane(listaNomes);   
 		        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); 
 		        scroll.setBounds(20, 50, 200, 150);
+		        
 		        refresh.setBounds(120, 100, 75, 25);
+		        
 				janela = new JFrame("LISTA DE CLIENTES");
-				
 				janela.getContentPane().setLayout(new FlowLayout());
 				janela.getContentPane().add(scroll);
 				janela.add(instrucao);
@@ -123,6 +129,7 @@ public class TelaAuxCliente implements ActionListener{
 				
 			break;
 			
+			//Busca
 			case 3:
 				
 				janela = new JFrame("BUSCAR");
@@ -210,8 +217,7 @@ public class TelaAuxCliente implements ActionListener{
 		Object src = e.getSource();
 		
 		if(src == salvar) {
-			String[] dadosCliente = new String[5];
-			boolean sucesso = false;
+			boolean sucesso;
 			dadosCliente[0] = inNome.getText();
 			dadosCliente[1] = inCpf.getText();
 			dadosCliente[2] = inEndereco.getText();
@@ -227,7 +233,6 @@ public class TelaAuxCliente implements ActionListener{
 		
 		if (src == buscar) {
 			
-			String[] dadosCliente = new String[5];
 			boolean sucesso = false;
 			int posicao = 0;
 			
@@ -235,6 +240,7 @@ public class TelaAuxCliente implements ActionListener{
 			qtdClientes = dados.getDados().getClientes().size();
 			
 			for(int i = 0; i < qtdClientes; i++) {
+				
 				if (dadosCliente[0].equals(dados.getDados().getClientes().get(i).getNome())) {
 					sucesso = true;
 					posicao = i;
@@ -256,7 +262,19 @@ public class TelaAuxCliente implements ActionListener{
 		}
 		
 		if (src == editar) {
-			
+			String[] dadosCliente = new String[5];
+			boolean sucesso = false;
+			dadosCliente[0] = inNome.getText();
+			dadosCliente[1] = inCpf.getText();
+			dadosCliente[2] = inEndereco.getText();
+			dadosCliente[3] = inEmail.getText();
+			dadosCliente[4] = inTelefone.getText();
+			sucesso = dados.editarCadastrarCliente(dadosCliente, 2, posicao);
+			if(sucesso) {
+				mensagemSucessoEditar();
+			}	else {
+				mensagemFalhaEditar();
+			}
 		}
 		
 	}
@@ -273,6 +291,21 @@ public class TelaAuxCliente implements ActionListener{
 		janela.dispose();
 	}
 	
+	public void mensagemSucessoEditar() {
+		JOptionPane.showMessageDialog(null, "Cliente editado!" 
+				+ "\nO mesmo pode ser buscado"
+				+ "\nOu pode ser visto na lista", null, 
+				JOptionPane.INFORMATION_MESSAGE);
+		janela.dispose();
+	}
+	
+	public void mensagemFalhaEditar() {
+		JOptionPane.showMessageDialog(null, "Falha ao editar!" 
+				+ "\nOs campos cpf e telefone apenas aceitam números(0-9)" , null, 
+				JOptionPane.ERROR_MESSAGE);
+		janela.dispose();
+	}
+	
 	public void mensagemSucessoCadastro() {
 		
 		JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!" 
@@ -283,7 +316,8 @@ public class TelaAuxCliente implements ActionListener{
 	}
 	
 	public void mensagemFalhaCadastro() {
-		JOptionPane.showMessageDialog(null, "Falha ao cadastrar!", null, 
+		JOptionPane.showMessageDialog(null, "Falha ao cadastrar!" 
+				+ "\nOs campos cpf e telefone apenas aceitam números(0-9)", null, 
 				JOptionPane.ERROR_MESSAGE);
 		janela.dispose();
 	}

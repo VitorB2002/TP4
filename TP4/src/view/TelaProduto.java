@@ -35,6 +35,10 @@ public class TelaProduto implements ActionListener{
 		janela.add(pelicula);
 		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		janela.setVisible(true);
+		capa.addActionListener(this);
+		carregador.addActionListener(this);
+		pelicula.addActionListener(this);
+		fone.addActionListener(this);
 		
 		//TESTES NO CONSOLE
 		
@@ -125,13 +129,25 @@ public class TelaProduto implements ActionListener{
 		if(src == capa) {
 			aux = 8;
 			String[] dadosProduto = new String[aux];
-			
+			new TelaAuxProduto().auxProduto(1, dadosProduto, estoque);
 		}
 		
 		if(src == carregador) {
+			aux = 6;
+			String[] dadosProduto = new String[aux];
+			new TelaAuxProduto().auxProduto(2, dadosProduto, estoque);
+		}
+		
+		if(src == pelicula) {
 			aux = 8;
 			String[] dadosProduto = new String[aux];
-			
+			new TelaAuxProduto().auxProduto(3, dadosProduto, estoque);
+		}
+		
+		if(src == fone) {
+			aux = 9;
+			String[] dadosProduto = new String[aux];
+			new TelaAuxProduto().auxProduto(4, dadosProduto, estoque);
 		}
 	}
 }

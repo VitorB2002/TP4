@@ -22,7 +22,8 @@ public class ControleDados {
 		if(opcao == 1) {
 			
 			Cliente c = new Cliente(dadosCliente[0],dadosCliente[1],dadosCliente[2],dadosCliente[3],dadosCliente[4]);
-			//Validação de Strings Nome e cpf
+			
+			//Validação de Strings cpf e telefone
 			if(dadosCliente[1].matches("[0-9]+") && dadosCliente[4].matches("[0-9]+")) {
 				System.out.println("True");
 				d.cadastraCliente(c);
@@ -33,12 +34,20 @@ public class ControleDados {
 			}
 			
 		}	else {
+			
 			Cliente c = new Cliente(dadosCliente[0],dadosCliente[1],dadosCliente[2],dadosCliente[3],dadosCliente[4]);
 			
-			d.editaCliente(c, pos);
-			return true;
+			//Validação de Strings cpf e telefone
+			if(dadosCliente[1].matches("[0-9]+") && dadosCliente[4].matches("[0-9]+")) {
+					System.out.println("True");
+					d.editaCliente(c, pos);
+					return true;
+				} else {
+					System.out.println("False");
+					return false;
+				}
+			
 		}
-		
 		
 	}
 	

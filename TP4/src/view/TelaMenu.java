@@ -84,8 +84,16 @@ public class TelaMenu implements ActionListener {
 			new TelaRelatorio();
 		
 		if(src == ajuda)
-			new TelaAjuda();
+			mensagemAjuda();
 	
 	}
+	
+	public void mensagemAjuda() {
+			
+			JOptionPane.showMessageDialog(null, "O programa possui 5 objetos de cada cadastrados" 
+			+ "\nAs vendas não possuem dados pré cadastrados", null, 
+					JOptionPane.INFORMATION_MESSAGE);
+			
+		}
 
 }
