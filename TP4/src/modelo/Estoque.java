@@ -16,26 +16,76 @@ public class Estoque {
 	private int qtdFone = 0;
 	private int qtdVenda = 0;
 	
-	public void cadastraCapa(Capa c) {
-		this.capas.add(c);
+	public void cadastraCapa(Capa capa) {
+		this.capas.add(capa);
 	}
 	
-	public void editaCapa(Capa c, int pos) {
-		this.capas.set(pos, c);
+	public void editaCapa(Capa capa, int pos) {
+		this.capas.set(pos, capa);
+	}
+	
+	public void cadastraCarregador(Carregador carregador) {
+		this.carregadores.add(carregador);
+	}
+	
+	public void editaCarregador(Carregador carregador, int pos) {
+		this.carregadores.set(pos, carregador);
+	}
+	
+	public void cadastraPelicula(Pelicula pelicula) {
+		this.peliculas.add(pelicula);
+	}
+	
+	public void editaPelicula(Pelicula pelicula, int pos) {
+		this.peliculas.set(pos, pelicula);
+	}
+	
+	public void cadastraFone(Fone fone) {
+		this.fones.add(fone);
+	}
+	
+	public void editaFone(Fone fone, int pos) {
+		this.fones.set(pos, fone);
 	}
 	
 	public void gerarDados(){
 		int aux;
 		aux = 5;
 		for (int i = 0; i < aux; i++) {
-			capas.add(new Capa("CapaModelo" + i
+			
+			capas.add(new Capa("Capa" + i
 					, "Proteção"
-					, (aux*i)
+					, (aux*i + 5)
 					, "Marca" + i
 					, "Material" + i
 					, "Celular" + i
 					, (aux*0.4)
 					, "Cor" + i));
+			
+			carregadores.add(new Carregador("Carregador" + i
+					, "Turbo"
+					, (aux*i + 5)
+					, "Marca" + (i*2)
+					, (i + 0.5)
+					, (i*0.5 + 0.1)));
+			
+			peliculas.add(new Pelicula("Pelicula" + i
+					, "Proteção"
+					, (aux*i + 3)
+					, "Sam" + i
+					, "Vidro"
+					, (aux*0.5 + 0.2)
+					, "Celular A" + (i + 2)));
+			
+			fones.add(new Fone("Fone" + i
+					,"Audio nota" + (i + 5)
+					,(aux*i + 35)
+					,"Marca" + (i*3)
+					,(aux*i) + 0.2
+					,"Bluetooth"
+					, true
+					,"Azul"
+					,"Silicone"));
 		}
 			
 	}

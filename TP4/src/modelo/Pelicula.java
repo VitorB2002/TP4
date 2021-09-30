@@ -7,6 +7,9 @@ public class Pelicula extends Produto{
 	private String celularCompativel;
 	
 	//Constructor
+	public Pelicula() {
+		
+	}
 	
 	public Pelicula(String modelo, String descricao, double valor, String marca, String material, double espessura, String celularCompativel) {
 		this.modelo = modelo;

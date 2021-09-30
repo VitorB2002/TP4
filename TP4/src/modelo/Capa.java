@@ -8,6 +8,9 @@ public class Capa extends Produto {
 	private String cor;
 	
 	//Constructor
+	public Capa() {
+		
+	}
 	
 	public Capa(String modelo, String descricao, double valor, String marca, String material, String celularCompativel, double peso, String cor) {
 		this.modelo = modelo;

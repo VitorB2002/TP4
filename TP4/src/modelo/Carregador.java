@@ -7,6 +7,10 @@ public class Carregador extends Produto {
 	
 	//Constructor
 	
+	public Carregador() {
+		
+	}
+	
 	public Carregador(String modelo, String descricao, double valor, String marca, double tamanhoCabo, double potencia) {
 		this.modelo = modelo;
 		this.descricao = descricao;
