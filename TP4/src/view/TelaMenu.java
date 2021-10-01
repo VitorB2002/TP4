@@ -12,6 +12,7 @@ public class TelaMenu implements ActionListener {
 	private static JLabel titulo = new JLabel("MENU");
 	private static JButton clientes = new JButton("Clientes");
 	private static JButton produto = new JButton("Produtos");
+	private static JButton venda = new JButton("Vendas");
 	private static JButton relatorio = new JButton("Relatorios");
 	private static JButton ajuda = new JButton("Ajuda");
 	private static String[] dadosCliente = new String[5];
@@ -29,10 +30,12 @@ public class TelaMenu implements ActionListener {
 		produto.setBounds(140, 100, 100, 30);
 		relatorio.setBounds(140, 150, 100, 30);
 		clientes.setBounds(140, 50, 100, 30);
-		ajuda.setBounds(140, 200, 100, 30);
+		venda.setBounds(140, 200, 100, 30);
+		ajuda.setBounds(140, 250, 100, 30);
 		
 		//Adicionando componentes ao Jframe
 		janela.setLayout(null);
+		janela.add(venda);
 		janela.add(ajuda);
 		janela.add(titulo);
 		janela.add(clientes);
@@ -68,6 +71,7 @@ public class TelaMenu implements ActionListener {
 		clientes.addActionListener(menu);
 		relatorio.addActionListener(menu);
 		produto.addActionListener(menu);
+		venda.addActionListener(menu);
 		ajuda.addActionListener(menu);
 	}
 	
@@ -81,7 +85,10 @@ public class TelaMenu implements ActionListener {
 			new TelaProduto().mostrarTela(estoque);
 		
 		if(src == relatorio)
-			new TelaRelatorio();
+			mensagemRelatorio();
+		
+		if(src == venda)
+			new TelaVenda().mostrarTela(estoque, dados);
 		
 		if(src == ajuda)
 			mensagemAjuda();
@@ -94,6 +101,13 @@ public class TelaMenu implements ActionListener {
 			+ "\nAs vendas não possuem dados pré cadastrados", null, 
 					JOptionPane.INFORMATION_MESSAGE);
 			
+		}
+	
+	public void mensagemRelatorio() {
+		
+		JOptionPane.showMessageDialog(null, "Função de Prioridade 3" 
+				+ "\nNão implementado ainda", null, 
+						JOptionPane.INFORMATION_MESSAGE);
 		}
 
 }

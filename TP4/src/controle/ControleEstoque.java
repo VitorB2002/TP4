@@ -17,6 +17,48 @@ private Estoque e = new Estoque();
 		this.e = e;
 	}
 	
+	public boolean CadastrarVenda(String[] dadosCliente, String[] dadosProduto, int opcao) {
+		
+		Cliente cliente = new Cliente(dadosCliente[0], dadosCliente[1], dadosCliente[2], dadosCliente[3], dadosCliente[4]);
+		Capa capa = new Capa();
+		Carregador carregador = new Carregador();
+		Pelicula pelicula = new Pelicula();
+		Fone fone = new Fone();
+		Venda venda = new Venda();
+		
+		double valor = Double.parseDouble(dadosProduto[2]);
+		double peso;
+		
+		switch(opcao) {
+		
+			case 1:
+				peso = Double.parseDouble(dadosProduto[6]);
+				capa = new Capa(dadosProduto[0]
+						, dadosProduto[1]
+						, valor
+						, dadosProduto[3]
+						, dadosProduto[4]
+						, dadosProduto[5]
+						, peso
+						, dadosProduto[7]);
+				venda = new Venda(cliente, capa);
+				e.cadastraVenda(venda);
+			break;
+			case 2:
+			break;
+			case 3:
+			break;
+			case 4:
+			break;
+			
+		}
+		
+		
+		
+		
+		return true;
+	}
+	
 	public boolean editarCadastrarProduto(String[] dadosProduto, int opcao, int pos) {
 		
 		//Validação das Strings apenas checka nulo
@@ -45,7 +87,6 @@ private Estoque e = new Estoque();
 			case 1:
 				
 				if(dadosProduto[4].isEmpty() || dadosProduto[5].isEmpty() || dadosProduto[6].isEmpty() || dadosProduto[7].isEmpty()) {
-					
 					return false;	
 				} else{
 					
@@ -60,7 +101,6 @@ private Estoque e = new Estoque();
 							, peso
 							, dadosProduto[7]);
 					
-					
 						e.cadastraCapa(capa);
 				}
 					
@@ -71,6 +111,7 @@ private Estoque e = new Estoque();
 				if(dadosProduto[4].isEmpty() || dadosProduto[5].isEmpty() || dadosProduto[6].isEmpty() || dadosProduto[7].isEmpty()) {
 					return false;
 				} else {
+					
 					peso = Double.parseDouble(dadosProduto[6]);
 					
 					capa = new Capa(dadosProduto[0]
@@ -114,6 +155,7 @@ private Estoque e = new Estoque();
 				if(dadosProduto[4].isEmpty() || dadosProduto[5].isEmpty()) {
 					return false;
 				} else {
+					
 					tamanhoCabo = Double.parseDouble(dadosProduto[4]);
 					potencia = Double.parseDouble(dadosProduto[5]);
 					
@@ -155,6 +197,7 @@ private Estoque e = new Estoque();
 				if(dadosProduto[4].isEmpty() || dadosProduto[5].isEmpty() || dadosProduto[6].isEmpty()) {
 					return false;
 				} else {
+					
 					espessura = Double.parseDouble(dadosProduto[5]);
 					
 					pelicula = new Pelicula(dadosProduto[0]
@@ -176,6 +219,14 @@ private Estoque e = new Estoque();
 					
 					return false;	
 				} else {
+					
+					if(dadosProduto[6].equals("s")) {
+						filtroRuido = true;
+					} else if(dadosProduto[6].equals("n")) {
+						filtroRuido = false;
+					} else {
+						return false;
+					}
 					
 					peso = Double.parseDouble(dadosProduto[4]);
 					filtroRuido = Boolean.parseBoolean(dadosProduto[6]);
@@ -200,6 +251,15 @@ private Estoque e = new Estoque();
 				if(dadosProduto[4].isEmpty() || dadosProduto[5].isEmpty() || dadosProduto[6].isEmpty() || dadosProduto[7].isEmpty() || dadosProduto[8].isEmpty()) {
 					return false;
 				} else {
+					
+					if(dadosProduto[6].equals("s")) {
+						filtroRuido = true;
+					} else if(dadosProduto[6].equals("n")) {
+						filtroRuido = false;
+					} else {
+						return false;
+					}
+					
 					peso = Double.parseDouble(dadosProduto[4]);
 					filtroRuido = Boolean.parseBoolean(dadosProduto[6]);
 					fone = new Fone(dadosProduto[0]

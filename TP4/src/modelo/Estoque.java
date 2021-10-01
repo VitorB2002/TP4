@@ -48,6 +48,14 @@ public class Estoque {
 		this.fones.set(pos, fone);
 	}
 	
+	public void cadastraVenda(Venda venda) {
+		this.vendas.add(venda);
+	}
+	
+	public void editaVenda(Venda venda, int pos) {
+		this.vendas.set(pos, venda);
+	}
+	
 	public void gerarDados(){
 		int aux;
 		aux = 5;

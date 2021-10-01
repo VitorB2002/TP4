@@ -4,6 +4,10 @@ public class Venda {
 	private Cliente cliente;
 	private Produto prod;
 	
+	public Venda() {
+		
+	}
+	
 	public Venda(Cliente cliente, Produto prod) {
 		this.cliente = cliente;
 		this.prod = prod;

@@ -33,7 +33,7 @@ public class TelaProduto implements ActionListener{
 		janela.add(carregador);
 		janela.add(fone);
 		janela.add(pelicula);
-		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		janela.setVisible(true);
 		capa.addActionListener(this);
 		carregador.addActionListener(this);
@@ -109,7 +109,7 @@ public class TelaProduto implements ActionListener{
 		dadosProduto4[3] = "ASD";
 		dadosProduto4[4] = "2.8";
 		dadosProduto4[5] = "In ear";
-		dadosProduto4[6] = "true";
+		dadosProduto4[6] = "s";
 		dadosProduto4[7] = "Vermelho";
 		dadosProduto4[8] = "Couro";
 		
