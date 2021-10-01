@@ -23,8 +23,8 @@ public class TelaProduto implements ActionListener{
 		
 		capa.setBounds(140, 90, 100, 30);
 		carregador.setBounds(140, 140, 100, 30);
-		fone.setBounds(140, 190, 100, 30);
-		pelicula.setBounds(140, 240, 100, 30);
+		pelicula.setBounds(140, 190, 100, 30);
+		fone.setBounds(140, 240, 100, 30);
 		
 		janela.add(titulo);
 		janela.setLayout(null);

@@ -68,17 +68,22 @@ private Estoque e = new Estoque();
 			
 			case 2:
 				
-				peso = Double.parseDouble(dadosProduto[6]);
+				if(dadosProduto[4].isEmpty() || dadosProduto[5].isEmpty() || dadosProduto[6].isEmpty() || dadosProduto[7].isEmpty()) {
+					return false;
+				} else {
+					peso = Double.parseDouble(dadosProduto[6]);
+					
+					capa = new Capa(dadosProduto[0]
+							, dadosProduto[1]
+							, valor
+							, dadosProduto[3]
+							, dadosProduto[4]
+							, dadosProduto[5]
+							, peso
+							, dadosProduto[7]);
+					e.editaCapa(capa, pos);
+				}
 				
-				capa = new Capa(dadosProduto[0]
-						, dadosProduto[1]
-						, valor
-						, dadosProduto[3]
-						, dadosProduto[4]
-						, dadosProduto[5]
-						, peso
-						, dadosProduto[7]);
-				e.editaCapa(capa, pos);
 				
 			break;
 			
@@ -106,16 +111,21 @@ private Estoque e = new Estoque();
 			
 			case 4:
 				
-				tamanhoCabo = Double.parseDouble(dadosProduto[4]);
-				potencia = Double.parseDouble(dadosProduto[5]);
+				if(dadosProduto[4].isEmpty() || dadosProduto[5].isEmpty()) {
+					return false;
+				} else {
+					tamanhoCabo = Double.parseDouble(dadosProduto[4]);
+					potencia = Double.parseDouble(dadosProduto[5]);
+					
+					carregador = new Carregador(dadosProduto[0]
+							, dadosProduto[1]
+							, valor
+							, dadosProduto[3]
+							, tamanhoCabo
+							, potencia);
+					e.editaCarregador(carregador, pos);
+				}
 				
-				carregador = new Carregador(dadosProduto[0]
-						, dadosProduto[1]
-						, valor
-						, dadosProduto[3]
-						, tamanhoCabo
-						, potencia);
-				e.editaCarregador(carregador, pos);
 				
 			break;
 			
@@ -142,16 +152,21 @@ private Estoque e = new Estoque();
 			
 			case 6:
 				
-				espessura = Double.parseDouble(dadosProduto[5]);
+				if(dadosProduto[4].isEmpty() || dadosProduto[5].isEmpty() || dadosProduto[6].isEmpty()) {
+					return false;
+				} else {
+					espessura = Double.parseDouble(dadosProduto[5]);
+					
+					pelicula = new Pelicula(dadosProduto[0]
+							, dadosProduto[1]
+							, valor
+							, dadosProduto[3]
+							, dadosProduto[4]
+							, espessura
+							, dadosProduto[6]);
+					e.editaPelicula(pelicula, pos);
+				}
 				
-				pelicula = new Pelicula(dadosProduto[0]
-						, dadosProduto[1]
-						, valor
-						, dadosProduto[3]
-						, dadosProduto[4]
-						, espessura
-						, dadosProduto[6]);
-				e.editaPelicula(pelicula, pos);
 				
 			break;
 			
@@ -182,18 +197,22 @@ private Estoque e = new Estoque();
 			
 			case 8:
 				
-				peso = Double.parseDouble(dadosProduto[4]);
-				filtroRuido = Boolean.parseBoolean(dadosProduto[6]);
-				fone = new Fone(dadosProduto[0]
-						, dadosProduto[1]
-						, valor
-						, dadosProduto[3]
-						, peso
-						, dadosProduto[5]
-						, filtroRuido
-						, dadosProduto[7]
-						, dadosProduto[8]);
-				e.editaFone(fone, pos);
+				if(dadosProduto[4].isEmpty() || dadosProduto[5].isEmpty() || dadosProduto[6].isEmpty() || dadosProduto[7].isEmpty() || dadosProduto[8].isEmpty()) {
+					return false;
+				} else {
+					peso = Double.parseDouble(dadosProduto[4]);
+					filtroRuido = Boolean.parseBoolean(dadosProduto[6]);
+					fone = new Fone(dadosProduto[0]
+							, dadosProduto[1]
+							, valor
+							, dadosProduto[3]
+							, peso
+							, dadosProduto[5]
+							, filtroRuido
+							, dadosProduto[7]
+							, dadosProduto[8]);
+					e.editaFone(fone, pos);
+				}
 				
 			break;
 		}
