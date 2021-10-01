@@ -5,6 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import controle.*;
+import modelo.Carregador;
 
 public class TelaVenda implements ActionListener{
 	
@@ -16,10 +17,10 @@ public class TelaVenda implements ActionListener{
 	private static JButton cadastra = new JButton("Cadastrar");
 	private static JButton edita = new JButton("Editar");
 	private static JButton ajuda = new JButton("Ajuda");
+	private static JButton ajuda2 = new JButton("Ajuda");
 	private static JButton escolha = new JButton("Escolha");
 	private static String[] dadosCliente = new String[5];
 	private static String[] dadosProduto = new String[9];
-	private boolean sucesso;
 	private JLabel modelo = new JLabel("Modelo:");
 	private JLabel nome = new JLabel("Nome:");
 	private JTextField inModelo;
@@ -64,7 +65,11 @@ public class TelaVenda implements ActionListener{
 		}
 		
 		if(src == ajuda) {
-			
+			mensagemAjuda();
+		}
+		
+		if(src == ajuda2) {
+			mensagemAjuda2();
 		}
 		
 		if(src == escolha) {
@@ -106,6 +111,15 @@ public class TelaVenda implements ActionListener{
 				
 				if(aux.equals(estoque.getEstoque().getCarregadores().get(i).getModelo())) {
 					sucessoProduto = true;
+					dadosProduto[0] = estoque.getEstoque().getCarregadores().get(i).getModelo();
+					dadosProduto[1] = estoque.getEstoque().getCarregadores().get(i).getDescricao();
+					dadosProduto[2] = Double.toString(estoque.getEstoque().getCarregadores().get(i).getValor());
+					dadosProduto[3] = estoque.getEstoque().getCarregadores().get(i).getMarca();
+					dadosProduto[4] = Double.toString(estoque.getEstoque().getCarregadores().get(i).getTamanhoCabo());
+					dadosProduto[5] = Double.toString(estoque.getEstoque().getCarregadores().get(i).getPotencia());
+					dadosProduto[6] = null;
+					dadosProduto[7] = null;
+					dadosProduto[8] = null;
 					opcao = 2;
 					i = tamanho;
 				}
@@ -180,7 +194,7 @@ public class TelaVenda implements ActionListener{
 		modelo.setBounds(70, 120, 50, 25);
 		nome.setBounds(70, 80, 50, 25);
 		escolha.setBounds(120, 160, 200, 25);
-		ajuda.setBounds(120, 200, 100, 25);
+		ajuda2.setBounds(120, 200, 100, 25);
 		
 		janelaCadastra.add(nome);
 		janelaCadastra.add(modelo);
@@ -188,14 +202,14 @@ public class TelaVenda implements ActionListener{
 		janelaCadastra.add(inModelo);
 		janelaCadastra.add(inNome);
 		janelaCadastra.add(titulo);
-		janelaCadastra.add(ajuda);
+		janelaCadastra.add(ajuda2);
 		
 		janelaCadastra.setLayout(null);
 		janelaCadastra.setSize(400, 300);
 		janelaCadastra.setVisible(true);
 		
 		escolha.addActionListener(this);
-		ajuda.addActionListener(this);
+		ajuda2.addActionListener(this);
 			
 	}
 	
@@ -214,6 +228,20 @@ public class TelaVenda implements ActionListener{
 		+ "\n(Ou ambos)", null, 
 				JOptionPane.ERROR_MESSAGE);
 		
+	}
+	
+	public void mensagemAjuda() {
+		JOptionPane.showMessageDialog(null, "Nesta tela será possível cadastrar e editar vendas" 
+				+ "\nUma venda atrela um produto a um cliente"
+				+ "\nObs: Ambos devem estar cadastrados para dar certo", null, 
+						JOptionPane.INFORMATION_MESSAGE);
+	}
+	
+	public void mensagemAjuda2() {
+		JOptionPane.showMessageDialog(null, "Insira no campo nome, o nome de um cliente existente" 
+				+ "\nNo campo modelo, insira o modelo de um produto existente"
+				+ "\nCaso os 2 existam, a venda do modelo será atrelada ao Cliente", null, 
+						JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 }

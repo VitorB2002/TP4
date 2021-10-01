@@ -16,7 +16,7 @@ public class TelaAuxProduto implements ActionListener{
     private static JFrame cadastra = new JFrame();
     private static JFrame busca = new JFrame();
     private static JLabel titulo = new JLabel();
-	private static JButton listar = new JButton("Listar");
+	private static JButton deletar = new JButton("Deletar");
 	private static JButton cadastrar = new JButton("Cadastrar");
 	private static JButton buscar = new JButton("Buscar");
 	private static JButton pesquisar = new JButton("Pesquisar");
@@ -72,20 +72,20 @@ public class TelaAuxProduto implements ActionListener{
 				titulo.setFont(new Font("Arial", Font.BOLD, 20));
 				titulo.setBounds(150, 8, 150, 30);
 				
-				listar.setBounds(120, 40, 150 , 60);
+				deletar.setBounds(120, 40, 150 , 60);
 				cadastrar.setBounds(120, 110, 150, 60);
 				buscar.setBounds(120, 180 , 150, 60);
 				
 				
 				capas.add(titulo);
-				capas.add(listar);
+				capas.add(deletar);
 				capas.add(cadastrar);
 				capas.add(buscar);
 				capas.setLayout(null);
 				capas.setSize(400,300);
 				capas.setVisible(true);
 				
-				listar.addActionListener(this);
+				deletar.addActionListener(this);
 				cadastrar.addActionListener(this);
 				buscar.addActionListener(this);
 				
@@ -98,20 +98,20 @@ public class TelaAuxProduto implements ActionListener{
 				titulo.setFont(new Font("Arial", Font.BOLD, 18));
 				titulo.setBounds(123, 8, 150, 30);
 				
-				listar.setBounds(120, 40, 150 , 60);
+				deletar.setBounds(120, 40, 150 , 60);
 				cadastrar.setBounds(120, 110, 150, 60);
 				buscar.setBounds(120, 180 , 150, 60);
 				
 				
 				carregadores.add(titulo);
-				carregadores.add(listar);
+				carregadores.add(deletar);
 				carregadores.add(cadastrar);
 				carregadores.add(buscar);
 				carregadores.setLayout(null);
 				carregadores.setSize(400,300);
 				carregadores.setVisible(true);
 				
-				listar.addActionListener(this);
+				deletar.addActionListener(this);
 				cadastrar.addActionListener(this);
 				buscar.addActionListener(this);
 				
@@ -123,20 +123,20 @@ public class TelaAuxProduto implements ActionListener{
 				titulo.setFont(new Font("Arial", Font.BOLD, 20));
 				titulo.setBounds(140, 8, 150, 30);
 				
-				listar.setBounds(120, 40, 150 , 60);
+				deletar.setBounds(120, 40, 150 , 60);
 				cadastrar.setBounds(120, 110, 150, 60);
 				buscar.setBounds(120, 180 , 150, 60);
 				
 				
 				peliculas.add(titulo);
-				peliculas.add(listar);
+				peliculas.add(deletar);
 				peliculas.add(cadastrar);
 				peliculas.add(buscar);
 				peliculas.setLayout(null);
 				peliculas.setSize(400, 300);
 				peliculas.setVisible(true);
 				
-				listar.addActionListener(this);
+				deletar.addActionListener(this);
 				cadastrar.addActionListener(this);
 				buscar.addActionListener(this);
 				
@@ -148,20 +148,20 @@ public class TelaAuxProduto implements ActionListener{
 				titulo.setFont(new Font("Arial", Font.BOLD, 20));
 				titulo.setBounds(150, 8, 150, 30);
 				
-				listar.setBounds(120, 40, 150 , 60);
+				deletar.setBounds(120, 40, 150 , 60);
 				cadastrar.setBounds(120, 110, 150, 60);
 				buscar.setBounds(120, 180 , 150, 60);
 				
 				
 				fones.add(titulo);
-				fones.add(listar);
+				fones.add(deletar);
 				fones.add(cadastrar);
 				fones.add(buscar);
 				fones.setLayout(null);
 				fones.setSize(400,300);
 				fones.setVisible(true);
 				
-				listar.addActionListener(this);
+				deletar.addActionListener(this);
 				cadastrar.addActionListener(this);
 				buscar.addActionListener(this);
 				
@@ -174,7 +174,7 @@ public class TelaAuxProduto implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		
-		if (src == listar) {
+		if (src == deletar) {
 			
 		}
 		
@@ -571,6 +571,7 @@ public class TelaAuxProduto implements ActionListener{
 				cadastra.setVisible(true);
 				
 				salvar.addActionListener(this);
+				
 				
 			break;
 			

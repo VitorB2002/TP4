@@ -28,6 +28,10 @@ private Estoque e = new Estoque();
 		
 		double valor = Double.parseDouble(dadosProduto[2]);
 		double peso;
+		double tamanhoCabo;
+		double potencia;
+		double espessura;
+		boolean filtroRuido;
 		
 		switch(opcao) {
 		
@@ -44,11 +48,29 @@ private Estoque e = new Estoque();
 				venda = new Venda(cliente, capa);
 				e.cadastraVenda(venda);
 			break;
+			
 			case 2:
+				
+				tamanhoCabo = Double.parseDouble(dadosProduto[4]);
+				potencia = Double.parseDouble(dadosProduto[5]);
+				
+				carregador = new Carregador(dadosProduto[0]
+						, dadosProduto[1]
+						, valor
+						, dadosProduto[3]
+						, tamanhoCabo
+						, potencia);
+				venda = new Venda(cliente, carregador);
+				e.cadastraVenda(venda);
+				
 			break;
+			
 			case 3:
+				
 			break;
+			
 			case 4:
+				
 			break;
 			
 		}

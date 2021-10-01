@@ -18,7 +18,7 @@ public class TelaAuxCliente implements ActionListener{
 	private static JLabel telefone = new JLabel("Telefone: ");
 	private static JButton salvar = new JButton("Salvar");
 	private static JButton buscar = new JButton("Buscar");
-	private static JButton refresh = new JButton("Refresh");
+	private static JButton ajuda = new JButton("Ajuda");
 	private static ControleDados dados;
 	private static JList<String> listaNomes = new JList<String>();
 	private static JButton editar = new JButton("Editar");
@@ -45,6 +45,7 @@ public class TelaAuxCliente implements ActionListener{
 			//Listar clientes
 			case 1:
 				
+				janela = new JFrame("Lista de clientes");
 				//Obtendo nomes para a lista
 				qtdClientes = dados.getDados().getClientes().size();
 				String[] nomes = new String[qtdClientes];
@@ -54,9 +55,6 @@ public class TelaAuxCliente implements ActionListener{
 					nomes[i] = (dados.getDados().getClientes().get(i).getNome());
 				}
 				
-				JLabel instrucao = new JLabel("Clique para editar");
-				instrucao.setBounds(120, 10, 60, 60);
-				
 				//Jlist para view criado
 				listaNomes = new JList<String>(nomes);
 				listaNomes.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
@@ -65,18 +63,12 @@ public class TelaAuxCliente implements ActionListener{
 				//Barra de rolagem para a lista
 				JScrollPane scroll = new JScrollPane(listaNomes);   
 		        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); 
-		        scroll.setBounds(20, 50, 200, 150);
-		        
-		        refresh.setBounds(120, 100, 75, 25);
-		        
-				janela = new JFrame("LISTA DE CLIENTES");
+		        scroll.setBounds(20, 50, 200, 150);   
+				
 				janela.getContentPane().setLayout(new FlowLayout());
 				janela.getContentPane().add(scroll);
-				janela.add(instrucao);
-				janela.add(refresh);
 				janela.setSize(300, 250);
 				janela.setVisible(true);
-				refresh.addActionListener(this);
 				
 			break;
 			
@@ -86,6 +78,7 @@ public class TelaAuxCliente implements ActionListener{
 				janela = new JFrame("CADASTRO");
 				titulo = new JLabel("--Cadastrar--");
 				salvar.setBounds(120, 290, 75, 25);
+				ajuda.setBounds(230, 290, 75, 25);
 				
 				inNome = new JTextField(100);
 				inCpf = new JTextField(11);
@@ -111,6 +104,7 @@ public class TelaAuxCliente implements ActionListener{
 				
 				janela.setLayout(null);
 				janela.add(titulo);
+				janela.add(ajuda);
 				janela.add(salvar);
 				janela.add(inNome);
 				janela.add(inCpf);
@@ -126,7 +120,7 @@ public class TelaAuxCliente implements ActionListener{
 				janela.setVisible(true);
 				
 				salvar.addActionListener(this);
-				
+				ajuda.addActionListener(this);
 			break;
 			
 			//Busca
@@ -256,11 +250,6 @@ public class TelaAuxCliente implements ActionListener{
 			}
 		}
 		
-		if (src == refresh) {
-			janela.dispose();
-			this.auxClient(1, dados);
-		}
-		
 		if (src == editar) {
 			String[] dadosCliente = new String[5];
 			boolean sucesso = false;
@@ -277,6 +266,18 @@ public class TelaAuxCliente implements ActionListener{
 			}
 		}
 		
+		if (src == ajuda) {
+			mensagemAjuda();
+		}
+		
+	}
+	
+	public void mensagemAjuda() {
+		JOptionPane.showMessageDialog(null, "Para cadastrar com sucesso" 
+				+ "\n1 - Preencha todos os campos"
+				+ "\n2 - O campo cpf deve ser preenchido apenas com números"
+				+ "\n3 - O campo telefone deve ser preenchido apenas com números", null, 
+						JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 	public void mensagemSucessoBusca() {
@@ -317,7 +318,8 @@ public class TelaAuxCliente implements ActionListener{
 	
 	public void mensagemFalhaCadastro() {
 		JOptionPane.showMessageDialog(null, "Falha ao cadastrar!" 
-				+ "\nOs campos cpf e telefone apenas aceitam números(0-9)", null, 
+				+ "\nOs campos cpf e telefone apenas aceitam números(0-9)"
+				+ "\nOu um(ou mais) dos campos está vazio", null, 
 				JOptionPane.ERROR_MESSAGE);
 		janela.dispose();
 	}
@@ -330,5 +332,7 @@ public class TelaAuxCliente implements ActionListener{
 		}
 
 	}
+	
+	
 	
 }
