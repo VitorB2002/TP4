@@ -14,6 +14,7 @@ public class TelaMenu implements ActionListener {
 	private static JButton produto = new JButton("Produtos");
 	private static JButton venda = new JButton("Vendas");
 	private static JButton relatorio = new JButton("Relatorios");
+	private static JButton historico = new JButton("Historicos");
 	private static JButton ajuda = new JButton("Ajuda");
 	private static String[] dadosCliente = new String[5];
 	private static ControleDados dados = new ControleDados();
@@ -30,8 +31,9 @@ public class TelaMenu implements ActionListener {
 		produto.setBounds(140, 100, 100, 30);
 		relatorio.setBounds(140, 150, 100, 30);
 		clientes.setBounds(140, 50, 100, 30);
-		venda.setBounds(140, 200, 100, 30);
-		ajuda.setBounds(140, 250, 100, 30);
+		historico.setBounds(140, 200, 100, 30);
+		venda.setBounds(140, 250, 100, 30);
+		ajuda.setBounds(140, 300, 100, 30);
 		
 		//Adicionando componentes ao Jframe
 		janela.setLayout(null);
@@ -40,6 +42,7 @@ public class TelaMenu implements ActionListener {
 		janela.add(titulo);
 		janela.add(clientes);
 		janela.add(produto);
+		janela.add(historico);
 		janela.add(relatorio);
 		
 		janela.setSize(400, 400);
@@ -50,27 +53,12 @@ public class TelaMenu implements ActionListener {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		TelaMenu menu = new TelaMenu();
-		System.out.print("TESTE NO CONSOLE");
-		System.out.print("\n" + dados.getDados().getClientes().get(0).getNome());
-		
-		dadosCliente[0] = "Vitor";
-		dadosCliente[1] = "0525324935";
-		dadosCliente[2] = "Vila da alegria";
-		dadosCliente[3] = "Vitob.santos@gmail.com";
-		dadosCliente[4] = "61992151043";
-		dados.editarCadastrarCliente(dadosCliente, 2, 0);
-		
-		
-		System.out.print("\n" + dados.getDados().getClientes().get(0).getNome());
-		System.out.print("\n" + dados.getDados().getClientes().get(1).getNome());
-		System.out.print("\n" + dados.getDados().getClientes().get(2).getNome());
-		System.out.print("\n" + dados.getDados().getClientes().get(3).getNome());
-		System.out.print("\n" + dados.getDados().getClientes().get(4).getNome());
 		
 		//Leitor de ação
 		clientes.addActionListener(menu);
 		relatorio.addActionListener(menu);
 		produto.addActionListener(menu);
+		historico.addActionListener(menu);
 		venda.addActionListener(menu);
 		ajuda.addActionListener(menu);
 	}
@@ -85,7 +73,9 @@ public class TelaMenu implements ActionListener {
 			new TelaProduto().mostrarTela(estoque);
 		
 		if(src == relatorio)
-			mensagemRelatorio();
+			mensagemInfo();
+		if(src == historico)
+			mensagemInfo();
 		
 		if(src == venda)
 			new TelaVenda().mostrarTela(estoque, dados);
@@ -103,7 +93,7 @@ public class TelaMenu implements ActionListener {
 			
 		}
 	
-	public void mensagemRelatorio() {
+	public void mensagemInfo() {
 		
 		JOptionPane.showMessageDialog(null, "Função de Prioridade 3" 
 				+ "\nNão implementado ainda", null, 

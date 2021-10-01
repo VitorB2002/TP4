@@ -175,7 +175,7 @@ public class TelaAuxProduto implements ActionListener{
 		Object src = e.getSource();
 		
 		if (src == deletar) {
-			
+			mensagemInfo();
 		}
 		
 		if (src == cadastrar) {
@@ -218,7 +218,6 @@ public class TelaAuxProduto implements ActionListener{
 					}
 					
 					if(sucesso) {
-						System.out.println("Posicao = " + posicao);
 						mensagemSucessoBusca();
 						busca.dispose();
 						editaProduto(posicao, opcao);
@@ -243,7 +242,6 @@ public class TelaAuxProduto implements ActionListener{
 					}
 					
 					if(sucesso) {
-						System.out.println("Posicao = " + posicao);
 						mensagemSucessoBusca();
 						busca.dispose();
 						editaProduto(posicao, opcao);
@@ -268,7 +266,6 @@ public class TelaAuxProduto implements ActionListener{
 					}
 					
 					if(sucesso) {
-						System.out.println("Posicao = " + posicao);
 						mensagemSucessoBusca();
 						busca.dispose();
 						editaProduto(posicao, opcao);
@@ -293,7 +290,6 @@ public class TelaAuxProduto implements ActionListener{
 					}
 					
 					if(sucesso) {
-						System.out.println("Posicao = " + posicao);
 						mensagemSucessoBusca();
 						busca.dispose();
 						editaProduto(posicao, opcao);
@@ -356,11 +352,9 @@ public class TelaAuxProduto implements ActionListener{
 			sucesso = estoque.editarCadastrarProduto(produtos, aux, 0);
 			
 			if(sucesso) {
-				System.out.println("Deu bom");
 				mensagemSucessoCadastro();
 			} else {
 				mensagemFalhaCadastro();
-				System.out.println("Deu ruim");
 			}
 			
 		}
@@ -412,14 +406,10 @@ public class TelaAuxProduto implements ActionListener{
 			sucesso = estoque.editarCadastrarProduto(produtos, aux2, posicao);
 			
 			if(sucesso) {
-				System.out.println("\n\nDeu bom\n\n");
-				System.out.println(produtos[0] + aux2 + posicao);
-				System.out.println(estoque.getEstoque().getCapas().get(0).toString());
 				mensagemSucessoEditar();
 				edita.dispose();
 			} else {
 				mensagemFalhaEditar();
-				System.out.println("Deu ruim");
 			}
 		}
 		
@@ -1058,5 +1048,11 @@ public class TelaAuxProduto implements ActionListener{
 			break;
 		
 		}
+		
+	}
+	
+	public void mensagemInfo() {
+		JOptionPane.showMessageDialog(null, "Função não implementada" , null, 
+						JOptionPane.INFORMATION_MESSAGE);
 	}
 }

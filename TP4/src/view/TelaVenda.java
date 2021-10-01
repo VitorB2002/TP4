@@ -190,8 +190,6 @@ public class TelaVenda implements ActionListener{
 						mensagemSucessoEditar();
 						posicao = 0;
 						estoque.editarVenda(dadosCliente, dadosProduto, opcao, posicao);
-						System.out.println(estoque.getEstoque().getVendas().get(0).getCliente().getNome());
-						System.out.println(estoque.getEstoque().getVendas().get(0).getProd().getModelo());
 					} else {
 							mensagemFalhaEditar();
 						}
@@ -321,8 +319,6 @@ public class TelaVenda implements ActionListener{
 			if(sucessoCliente && sucessoProduto) {
 				mensagemSucessoCadastro();
 				estoque.cadastrarVenda(dadosCliente, dadosProduto, opcao);
-				System.out.println(estoque.getEstoque().getVendas().get(0).getCliente().getNome());
-				System.out.println(estoque.getEstoque().getVendas().get(0).getProd().getModelo());
 			} else {
 				mensagemFalhaCadastro();
 			}

@@ -49,87 +49,6 @@ public class TelaProduto implements ActionListener{
 		listar.addActionListener(this);
 		ajuda.addActionListener(this);
 		
-		//TESTES NO CONSOLE
-		
-		//CAPA
-		String[] dadosProduto = new String[8];
-		dadosProduto[0] = "CAPAO"; 
-		dadosProduto[1] = "MUITA PROTECAO";
-		dadosProduto[2] = "25.5";
-		dadosProduto[3] = "ASD";
-		dadosProduto[4] = "GASREH";
-		dadosProduto[5] = "ARSDGH";
-		dadosProduto[6] = "34";
-		dadosProduto[7] = "Vermei";
-		
-		//Cadastro
-		estoque.editarCadastrarProduto(dadosProduto, 1, 0);
-		System.out.println("TESTES NO CONSOLE");
-		System.out.println("\n\nCadastro de capa: ");
-		System.out.println("\nCapa indice 5:\n" + estoque.getEstoque().getCapas().get(5).toString());
-		System.out.println("\nCapa indice 0:\n" + estoque.getEstoque().getCapas().get(0).toString());
-		//Edição
-		estoque.editarCadastrarProduto(dadosProduto, 2, 0);
-		System.out.println("\nEdição de capa indice 5 para 0: \n" + estoque.getEstoque().getCapas().get(0).toString());
-		
-		
-		//CARREGADOR
-		String[] dadosProduto2 = new String[6];
-		dadosProduto2[0] = "CARREGADORZAO"; 
-		dadosProduto2[1] = "MUITA CARREGAÇÃO";
-		dadosProduto2[2] = "23.0";
-		dadosProduto2[3] = "ASD";
-		dadosProduto2[4] = "2";
-		dadosProduto2[5] = "5";
-		
-		//Cadastro
-		estoque.editarCadastrarProduto(dadosProduto2, 3, 0);
-		System.out.println("\n\nCadastro de carregador: ");
-		System.out.println("\nCarregador indice 5:\n" + estoque.getEstoque().getCarregadores().get(5).toString());
-		System.out.println("\nCarregador indice 0:\n" + estoque.getEstoque().getCarregadores().get(0).toString());
-		//Edição
-		estoque.editarCadastrarProduto(dadosProduto2, 4, 0);
-		System.out.println("\nEdição de carregador indice 5 para 0: \n" + estoque.getEstoque().getCarregadores().get(0).toString());
-		
-		//Pelicula
-		String[] dadosProduto3 = new String[7];
-		dadosProduto3[0] = "PELICULAA"; 
-		dadosProduto3[1] = "SUPER PROTEÇÃO";
-		dadosProduto3[2] = "22.0";
-		dadosProduto3[3] = "ASD";
-		dadosProduto3[4] = "MATERIAL";
-		dadosProduto3[5] = "24.0";
-		dadosProduto3[6] = "FON";
-		
-		//Cadastro
-		estoque.editarCadastrarProduto(dadosProduto3, 5, 0);
-		System.out.println("\n\nCadastro de Pelicula: ");
-		System.out.println("\nPelicula indice 5:\n" + estoque.getEstoque().getPeliculas().get(5).toString());
-		System.out.println("\nPelicula indice 0:\n" + estoque.getEstoque().getPeliculas().get(0).toString());
-		//Edição
-		estoque.editarCadastrarProduto(dadosProduto3, 6, 0);
-		System.out.println("\nEdição de Pelicula indice 5 para 0: \n" + estoque.getEstoque().getPeliculas().get(0).toString());
-		
-		//Fone
-		String[] dadosProduto4 = new String[9];
-		dadosProduto4[0] = "Fonão"; 
-		dadosProduto4[1] = "SUPER Alto";
-		dadosProduto4[2] = "55.0";
-		dadosProduto4[3] = "ASD";
-		dadosProduto4[4] = "2.8";
-		dadosProduto4[5] = "In ear";
-		dadosProduto4[6] = "s";
-		dadosProduto4[7] = "Vermelho";
-		dadosProduto4[8] = "Couro";
-		
-		//Cadastro
-		estoque.editarCadastrarProduto(dadosProduto4, 7, 0);
-		System.out.println("\n\nCadastro de Fone: ");
-		System.out.println("\nFone indice 5:\n" + estoque.getEstoque().getFones().get(5).toString());
-		System.out.println("\nFone indice 0:\n" + estoque.getEstoque().getFones().get(0).toString());
-		//Edição
-		estoque.editarCadastrarProduto(dadosProduto4, 8, 0);
-		System.out.println("\nEdição de Fone indice 5 para 0: \n" + estoque.getEstoque().getFones().get(0).toString());
 	}
 	
 	public void actionPerformed(ActionEvent e) {
@@ -165,13 +84,15 @@ public class TelaProduto implements ActionListener{
 		
 		if (src == listar) {
 			
-			titulo = new JLabel("Listas");
+			titulo = new JLabel("Filtrar Por");
 			titulo.setFont(new Font("Arial", Font.BOLD, 20));
 			titulo.setBounds(135, 30, 150, 30);
 			
 			lista.setLayout(null);
 			lista.setSize(400, 400);
-			lista.setVisible(true);
+			lista.setVisible(false);
+			mensagemInfo();
+			lista.dispose();
 		}
 	}
 	
@@ -179,6 +100,11 @@ public class TelaProduto implements ActionListener{
 		JOptionPane.showMessageDialog(null, "Nesta tela será possível manipular produtos" 
 				+ "\nEscolha um dos 4 tipos de produto"
 				+ "\nE você será capaz de realizar as funções mostradas", null, 
+						JOptionPane.INFORMATION_MESSAGE);
+	}
+	
+	public void mensagemInfo() {
+		JOptionPane.showMessageDialog(null, "Função não implementada" , null, 
 						JOptionPane.INFORMATION_MESSAGE);
 	}
 }
